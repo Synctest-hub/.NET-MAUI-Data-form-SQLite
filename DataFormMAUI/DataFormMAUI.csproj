@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>DataFormMAUI</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>DataFormMAUI</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.DataFormMAUI</ApplicationId>
+		<ApplicationIdGuid>2beba2f6-f865-4786-ab24-e272690fa61d</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\InputLayoutIcons.ttf" />
+	  <None Remove="Resources\Images\Add.png" />
+	  <None Remove="Resources\Images\people_circle0.png" />
+	  <None Remove="Resources\Images\people_circle1.png" />
+	  <None Remove="Resources\Images\people_circle10.png" />
+	  <None Remove="Resources\Images\people_circle11.png" />
+	  <None Remove="Resources\Images\people_circle12.png" />
+	  <None Remove="Resources\Images\people_circle13.png" />
+	  <None Remove="Resources\Images\people_circle14.png" />
+	  <None Remove="Resources\Images\people_circle15.png" />
+	  <None Remove="Resources\Images\people_circle16.png" />
+	  <None Remove="Resources\Images\people_circle17.png" />
+	  <None Remove="Resources\Images\people_circle18.png" />
+	  <None Remove="Resources\Images\people_circle19.png" />
+	  <None Remove="Resources\Images\people_circle2.png" />
+	  <None Remove="Resources\Images\people_circle20.png" />
+	  <None Remove="Resources\Images\people_circle21.png" />
+	  <None Remove="Resources\Images\people_circle22.png" />
+	  <None Remove="Resources\Images\people_circle23.png" />
+	  <None Remove="Resources\Images\people_circle24.png" />
+	  <None Remove="Resources\Images\people_circle25.png" />
+	  <None Remove="Resources\Images\people_circle26.png" />
+	  <None Remove="Resources\Images\people_circle27.png" />
+	  <None Remove="Resources\Images\people_circle3.png" />
+	  <None Remove="Resources\Images\people_circle4.png" />
+	  <None Remove="Resources\Images\people_circle5.png" />
+	  <None Remove="Resources\Images\people_circle6.png" />
+	  <None Remove="Resources\Images\people_circle7.png" />
+	  <None Remove="Resources\Images\people_circle8.png" />
+	  <None Remove="Resources\Images\people_circle9.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
+	  <PackageReference Include="Syncfusion.Maui.DataForm" Version="23.2.7" />
+	  <PackageReference Include="Syncfusion.Maui.ListView" Version="23.2.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\EditPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>
