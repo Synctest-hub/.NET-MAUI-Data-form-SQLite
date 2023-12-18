@@ -11,15 +11,9 @@
               HasShadow="False" Grid.ColumnSpan="{OnIdiom Default=2, Desktop=1}"
               CornerRadius="10" Grid.Column="0" WidthRequest="{OnPlatform WinUI=400, MacCatalyst=600, Default=-1}"
               HorizontalOptions="{OnIdiom Desktop=Center, Default=Fill}" Padding="0">
-        <Frame.Margin>
-            <OnPlatform x:TypeArguments="thickness:Thickness">
-                <On Platform="MacCatalyst" Value="20"/>
-                <On Platform="UWP" Value="20"/>
-            </OnPlatform>
-        </Frame.Margin>
         <Grid RowDefinitions="0.9*, 1, 0.1*">
             <dataForm:SfDataForm x:Name="contactForm"
-                                DataObject="{Binding}"
+                                DataObject="{Binding SelectedItem}"
                                 LayoutType="TextInputLayout"
                                 AutoGenerateItems="False" 
                                ValidationMode="PropertyChanged">
@@ -30,7 +24,7 @@
                 <dataForm:SfDataForm.Items>
                     <dataForm:DataFormCustomItem FieldName="ProfileImage" LayoutType="Default">
                         <dataForm:DataFormCustomItem.EditorView>
-                            <Image Source="{Binding ProfileImage}"
+                            <Image Source="{Binding SelectedItem.ProfileImage}"
                                  HeightRequest="80"/>
                         </dataForm:DataFormCustomItem.EditorView>
                     </dataForm:DataFormCustomItem>
@@ -50,7 +44,7 @@
                         </dataForm:DataFormGroupItem.Items>
                     </dataForm:DataFormGroupItem>
 
-                    <dataForm:DataFormGroupItem Name="Mobile">
+                    <dataForm:DataFormGroupItem Name="Mobile" IsExpanded="True">
                         <dataForm:DataFormGroupItem.Items>
                             <dataForm:DataFormMaskedTextItem FieldName="Mobile" Mask="(###) ###-####" Keyboard="Numeric">
                                 <dataForm:DataFormMaskedTextItem.LeadingView>
@@ -65,7 +59,7 @@
                         </dataForm:DataFormGroupItem.Items>
                     </dataForm:DataFormGroupItem>
 
-                    <dataForm:DataFormGroupItem Name="Address" ColumnCount="2">
+                    <dataForm:DataFormGroupItem Name="Address" ColumnCount="2" IsExpanded="False">
                         <dataForm:DataFormGroupItem.Items>
                             <dataForm:DataFormMultilineItem FieldName="Address" RowSpan="2">
                                 <dataForm:DataFormMultilineItem.LeadingView>
@@ -93,14 +87,24 @@
                     </dataForm:DataFormTextItem>
                 </dataForm:SfDataForm.Items>
             </dataForm:SfDataForm>
-            <Line Grid.Row="1" Background="#F5F5F5"/>
-            <Button Text="Save" Grid.Row="2" x:Name="saveButton" Background="{StaticResource PrimaryBrush}" TextColor="White"
-                      HeightRequest="40"
-                      VerticalOptions="Center"
-                      FontSize="16"
-                      CornerRadius="5"
-                      WidthRequest="200"
-                      HorizontalOptions="Center" />
+            <Border Grid.Row="1" Background="#F5F5F5"/>
+
+            <Grid HeightRequest="35" Grid.Row="2" ColumnDefinitions="*,auto">
+                <Button  x:Name="DeleteButton" Command="{Binding DeleteItemCommand}" Margin="0,0,5,0" BorderColor="Transparent"
+                 Text="Delete" CornerRadius="10"  
+                         HorizontalOptions="Start" />
+
+                <HorizontalStackLayout HorizontalOptions="End" Grid.Column="1" Margin="0,0,5,0">
+                    <Button CornerRadius="10" Margin="0,0,5,0" HorizontalOptions="Center" BorderColor="Transparent"   x:Name="cancelButton" 
+       Text="Cancel" Command="{Binding CancelEditCommand}"/>
+
+                    <Button Text="Save" CornerRadius="10"   Grid.Row="2" x:Name="saveButton" BorderColor="Transparent" Background="{StaticResource PrimaryBrush}" TextColor="White"
+            VerticalOptions="Center"
+            Command="{Binding SaveItemCommand}"
+            HorizontalOptions="Center" />
+                    
+                </HorizontalStackLayout>
+            </Grid>
 
         </Grid>
     </Frame>

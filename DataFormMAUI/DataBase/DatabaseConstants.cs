@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataFormMAUI
+﻿namespace DataFormMAUI
 {
-    public static class Constants
+    public static class DatabaseConstants
     {
         public const string DatabaseFilename = "SQLiteDB.db";
 

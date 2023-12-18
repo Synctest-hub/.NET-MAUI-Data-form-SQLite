@@ -24,11 +24,10 @@ public partial class App : Application
             return database;
         }
     }
-    //protected override Window CreateWindow(IActivationState activationState)
-    //{
-    //    var window = base.CreateWindow(activationState);
-    //    window.Width = 500;
-    //    window.Height = 00;
-    //    return window;
-    //}
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        var window = base.CreateWindow(activationState);
+        window.Width = 400;
+        return window;
+    }
 }

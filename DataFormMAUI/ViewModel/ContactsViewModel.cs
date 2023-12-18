@@ -1,53 +1,18 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 
 namespace DataFormMAUI
 {
-    public class ContactsViewModel : INotifyPropertyChanged
+    public class ContactsViewModel 
     {
-        #region Fields
-
-        private ObservableCollection<ContactFormModel> contactsInfo;
-        private ContactFormModel selectedContact;
-
-        #endregion
-
-        #region Properties
-        public ContactFormModel SelectedItem
-        {
-            get 
-            {
-                return selectedContact;
-            }
-            set
-            {
-                selectedContact = value;
-                OnPropertyChanged("SelectedItem");
-            }
-        }
-        public ObservableCollection<ContactFormModel> ContactsInfo
-        {
-            get
-            {
-                return contactsInfo;
-            }
-            set
-            {
-                contactsInfo = value;
-                OnPropertyChanged("ContactsInfo");
-            }
-        }
-
+        public ContactFormModel SelectedItem { get; set; }
+        public ObservableCollection<ContactFormModel> ContactsInfo { get; set; }
         public Command CreateContactsCommand { get; set; }
         public Command<object> EditContactsCommand { get; set; }
         public Command SaveItemCommand { get; set; }
         public Command DeleteItemCommand { get; set; }
         public Command AddItemCommand { get; set; }
+        public Command CancelEditCommand { get; set; }
 
-        #endregion
-
-        #region Constructor
         public ContactsViewModel()
         {
             GenerateContacts();
@@ -56,14 +21,11 @@ namespace DataFormMAUI
             SaveItemCommand = new Command(OnSaveItem);
             DeleteItemCommand = new Command(OnDeleteItem);
             AddItemCommand = new Command(OnAddNewItem);
+            CancelEditCommand = new Command(OnCancelEdit);
         }
-        #endregion
 
-        #region Methods
-
-        private async void GenerateContacts()
+        private void GenerateContacts()
         {
-            ContactsInfo = new ObservableCollection<ContactFormModel>();
             ContactsInfo = new ContactsInfoRepository().GetContactDetails(20);
             PopulateDB();
         }
@@ -77,6 +39,11 @@ namespace DataFormMAUI
                    await App.Database.AddContactAsync(contact);
             }
         }
+        private async void OnCancelEdit()
+        {
+            await App.Current.MainPage.Navigation.PopAsync();
+        }
+
         private async void OnAddNewItem()
         {
             await App.Database.AddContactAsync(SelectedItem);
@@ -101,29 +68,16 @@ namespace DataFormMAUI
         {
             SelectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as ContactFormModel;
             var editPage = new EditPage();
-            editPage.BindingContext = SelectedItem;
+            editPage.BindingContext = this;
             App.Current.MainPage.Navigation.PushAsync(editPage);
         }
 
         private void OnCreateContacts()
         {
-            SelectedItem = new ContactFormModel() { Name = "", Mobile = "", ProfileImage = "" };
+            SelectedItem = new ContactFormModel() { Name = "", Mobile = "", ProfileImage = "new.png" };
             var editPage = new EditPage();
-            editPage.BindingContext = SelectedItem;
+            editPage.BindingContext = this;
             App.Current.MainPage.Navigation.PushAsync(editPage);
         }
-        #endregion
-
-        #region Interface Member
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string name)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-        }
-
-        #endregion
     }
 }

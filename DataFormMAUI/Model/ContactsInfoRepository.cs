@@ -4,24 +4,14 @@ namespace DataFormMAUI
 {
     class ContactsInfoRepository
     {
-        #region Fields
 
         private Random random = new Random();
-
         public ContactFormModel ContactFormModel { get; set; }
-
-        #endregion
-
-        #region Constructor
 
         public ContactsInfoRepository()
         {
             this.ContactFormModel = new ContactFormModel();
         }
-
-        #endregion
-
-        #region Get Contacts Details
 
         public ObservableCollection<ContactFormModel> GetContactDetails(int count)
         {
@@ -32,7 +22,7 @@ namespace DataFormMAUI
                 var details = new ContactFormModel()
                 {
                     ID = i+1,
-                    Mobile = random.Next(100, 400).ToString() + "-" + random.Next(500, 800).ToString() + "-" + random.Next(1000, 2000).ToString(),
+                    Mobile = random.Next(100, 400).ToString()  + random.Next(500, 800).ToString() + random.Next(1000, 2000).ToString(),
                     ProfileImage = "People_Circle" + (i % 19) + ".png",
                 };
 
@@ -46,9 +36,6 @@ namespace DataFormMAUI
             return customerDetails;
         }
 
-        #endregion
-
-        #region Contacts Information
 
         int[] imagePosition = new int[]
         {
@@ -57,15 +44,6 @@ namespace DataFormMAUI
             12,
             14,
             18
-        };
-
-        string[] contactType = new string[]
-        {
-            "HOME",
-            "WORK",
-            "MOBILE",
-            "OTHER",
-            "BUSINESS"
         };
 
         string[] CustomerNames_Girls =
@@ -200,7 +178,5 @@ namespace DataFormMAUI
             "Connor ",
             "Michael",           
         };
-
-        #endregion
     }
 }

@@ -8,7 +8,7 @@ namespace DataFormMAUI
 
         public SQLiteDatabase()
         {
-            _database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+            _database = new SQLiteAsyncConnection(DatabaseConstants.DatabasePath, DatabaseConstants.Flags);
             _database.CreateTableAsync<ContactFormModel>();
         }
 
