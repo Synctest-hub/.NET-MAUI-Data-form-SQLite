@@ -45,7 +45,6 @@
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -55,11 +54,79 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\Images\add.png" />
+		<!--<None Remove="Resources\Images\new.png" />-->
+		<None Remove="Resources\Images\peoplecircle0.png" />
+		<None Remove="Resources\Images\people_circle0.png" />
+		<None Remove="Resources\Images\people_circle1.png" />
+		<None Remove="Resources\Images\people_circle10.png" />
+		<None Remove="Resources\Images\people_circle11.png" />
+		<None Remove="Resources\Images\people_circle12.png" />
+		<None Remove="Resources\Images\people_circle13.png" />
+		<None Remove="Resources\Images\people_circle14.png" />
+		<None Remove="Resources\Images\people_circle15.png" />
+		<None Remove="Resources\Images\people_circle16.png" />
+		<None Remove="Resources\Images\people_circle17.png" />
+		<None Remove="Resources\Images\people_circle18.png" />
+		<None Remove="Resources\Images\people_circle19.png" />
+		<None Remove="Resources\Images\people_circle2.png" />
+		<None Remove="Resources\Images\people_circle20.png" />
+		<None Remove="Resources\Images\people_circle21.png" />
+		<None Remove="Resources\Images\people_circle22.png" />
+		<None Remove="Resources\Images\people_circle23.png" />
+		<None Remove="Resources\Images\people_circle24.png" />
+		<None Remove="Resources\Images\people_circle25.png" />
+		<None Remove="Resources\Images\people_circle26.png" />
+		<None Remove="Resources\Images\people_circle27.png" />
+		<None Remove="Resources\Images\people_circle3.png" />
+		<None Remove="Resources\Images\people_circle4.png" />
+		<None Remove="Resources\Images\people_circle5.png" />
+		<None Remove="Resources\Images\people_circle6.png" />
+		<None Remove="Resources\Images\people_circle7.png" />
+		<None Remove="Resources\Images\people_circle8.png" />
+		<None Remove="Resources\Images\people_circle9.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
 		<PackageReference Include="Syncfusion.Maui.DataForm" Version="24.1.41" />
 		<PackageReference Include="Syncfusion.Maui.ListView" Version="24.1.41" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<MauiImage Include="Resources\Images\add.png" />
+		<!--<MauiImage Include="Resources\Images\new.png" />-->
+		<MauiImage Include="Resources\Images\people_circle0.png" />
+		<MauiImage Include="Resources\Images\people_circle1.png" />
+		<MauiImage Include="Resources\Images\people_circle10.png" />
+		<MauiImage Include="Resources\Images\people_circle11.png" />
+		<MauiImage Include="Resources\Images\people_circle12.png" />
+		<MauiImage Include="Resources\Images\people_circle13.png" />
+		<MauiImage Include="Resources\Images\people_circle14.png" />
+		<MauiImage Include="Resources\Images\people_circle15.png" />
+		<MauiImage Include="Resources\Images\people_circle16.png" />
+		<MauiImage Include="Resources\Images\people_circle17.png" />
+		<MauiImage Include="Resources\Images\people_circle18.png" />
+		<MauiImage Include="Resources\Images\people_circle19.png" />
+		<MauiImage Include="Resources\Images\people_circle2.png" />
+		<MauiImage Include="Resources\Images\people_circle20.png" />
+		<MauiImage Include="Resources\Images\people_circle21.png" />
+		<MauiImage Include="Resources\Images\people_circle22.png" />
+		<MauiImage Include="Resources\Images\people_circle23.png" />
+		<MauiImage Include="Resources\Images\people_circle24.png" />
+		<MauiImage Include="Resources\Images\people_circle25.png" />
+		<MauiImage Include="Resources\Images\people_circle26.png" />
+		<MauiImage Include="Resources\Images\people_circle27.png" />
+		<MauiImage Include="Resources\Images\people_circle3.png" />
+		<MauiImage Include="Resources\Images\people_circle4.png" />
+		<MauiImage Include="Resources\Images\people_circle5.png" />
+		<MauiImage Include="Resources\Images\people_circle6.png" />
+		<MauiImage Include="Resources\Images\people_circle7.png" />
+		<MauiImage Include="Resources\Images\people_circle8.png" />
+		<MauiImage Include="Resources\Images\people_circle9.png" />
+	</ItemGroup>
+
 
 </Project>
