@@ -6,7 +6,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new MainPage());
+        MainPage =  new NavigationPage(new MainPage());
 
     }
 
@@ -27,7 +27,7 @@ public partial class App : Application
     protected override Window CreateWindow(IActivationState activationState)
     {
         var window = base.CreateWindow(activationState);
-        window.Width = 400;
+        window.Width = 450;
         return window;
     }
 }

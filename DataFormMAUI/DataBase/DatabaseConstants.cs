@@ -2,7 +2,7 @@
 {
     public static class DatabaseConstants
     {
-        public const string DatabaseFilename = "SQLiteDB.db";
+        public const string DatabaseFilename = "DataFormSQLiteDB.db";
 
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode

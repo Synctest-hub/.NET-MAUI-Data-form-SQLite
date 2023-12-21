@@ -4,40 +4,40 @@ namespace DataFormMAUI
 {
     public class SQLiteDatabase
     {
-        readonly SQLiteAsyncConnection _database;
+        readonly SQLiteConnection _database;
 
         public SQLiteDatabase()
         {
-            _database = new SQLiteAsyncConnection(DatabaseConstants.DatabasePath, DatabaseConstants.Flags);
-            _database.CreateTableAsync<ContactFormModel>();
+            _database = new SQLiteConnection(DatabaseConstants.DatabasePath, DatabaseConstants.Flags);
+            _database.CreateTable<ContactFormModel>();
         }
 
-        public async Task<List<ContactFormModel>> GetContactsAsync()
+        public  List<ContactFormModel> GetContactsAsync()
         {
-            return await _database.Table<ContactFormModel>().ToListAsync();
+            return  _database.Table<ContactFormModel>().ToList();
         }
 
-        public async Task<ContactFormModel> GetContactAsync(ContactFormModel item)
+        public  ContactFormModel GetContactAsync(ContactFormModel item)
         {
-            return await _database.Table<ContactFormModel>().Where(i => i.ID == item.ID).FirstOrDefaultAsync();
+            return  _database.Table<ContactFormModel>().Where(i => i.ID == item.ID).FirstOrDefault();
         }
         
-        public async Task<int> AddContactAsync(ContactFormModel item)
+        public int AddContactAsync(ContactFormModel item)
         {
-            return await  _database.InsertAsync(item);
+            return   _database.Insert(item);
         }
 
-        public Task<int> DeleteContactAsync(ContactFormModel item)
+        public int DeleteContactAsync(ContactFormModel item)
         {            
-            return _database.DeleteAsync(item);
+            return _database.Delete(item);
         }
 
-        public Task<int> UpdateContactAsync(ContactFormModel item)
+        public int UpdateContactAsync(ContactFormModel item)
         {
             if (item.ID != 0)
-                return _database.UpdateAsync(item);
+                return _database.Update(item);
             else
-                return _database.InsertAsync(item);
+                return _database.Insert(item);
         }
     }
 }

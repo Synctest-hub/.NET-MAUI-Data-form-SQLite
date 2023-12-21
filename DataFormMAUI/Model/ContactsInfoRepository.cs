@@ -4,14 +4,7 @@ namespace DataFormMAUI
 {
     class ContactsInfoRepository
     {
-
         private Random random = new Random();
-        public ContactFormModel ContactFormModel { get; set; }
-
-        public ContactsInfoRepository()
-        {
-            this.ContactFormModel = new ContactFormModel();
-        }
 
         public ObservableCollection<ContactFormModel> GetContactDetails(int count)
         {
@@ -21,8 +14,8 @@ namespace DataFormMAUI
             {
                 var details = new ContactFormModel()
                 {
-                    ID = i+1,
-                    Mobile = random.Next(100, 400).ToString()  + random.Next(500, 800).ToString() + random.Next(1000, 2000).ToString(),
+                    ID = i + 1,
+                    Mobile = random.Next(100, 400).ToString() + random.Next(500, 800).ToString() + random.Next(1000, 2000).ToString(),
                     ProfileImage = "People_Circle" + (i % 19) + ".png",
                 };
 
@@ -176,7 +169,7 @@ namespace DataFormMAUI
             "Xaviour",
             "Ryan   ",
             "Connor ",
-            "Michael",           
+            "Michael",
         };
     }
 }

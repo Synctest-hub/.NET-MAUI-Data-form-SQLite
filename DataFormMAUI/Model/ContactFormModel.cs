@@ -20,10 +20,29 @@ namespace DataFormMAUI
         [Display(ShortName = "Last name")]
         public string LastName { get; set; }
 
+        private string mobile;
+
         [DataType(DataType.PhoneNumber)]
         [Required]
         [RegularExpression(@"^\(\d{3}\) \d{3}-\d{4}$", ErrorMessage = "Invalid phone number")]
-        public string Mobile { get; set; }
+        public string Mobile
+        {
+            get { return mobile; }
+            set
+            {
+                mobile = value;
+                if (!string.IsNullOrEmpty(mobile))
+                {
+                    char[] specialCharacters = { '(', ')', '-', ' ' };
+                    if (mobile[0] == specialCharacters[0])
+                    {
+                        mobile = new string(value.Where(c => Char.IsLetterOrDigit(c)).ToArray());
+                    }
+                    if (mobile.Length == 10)
+                        this.MaskedMobileText = string.Format("({0}) {1}-{2}", mobile.Substring(0, 3), mobile.Substring(3, 3), mobile.Substring(6));
+                }
+            }
+        }
 
         [DataType(DataType.PhoneNumber)]
         public string Landline { get; set; }
@@ -41,5 +60,7 @@ namespace DataFormMAUI
 
         public string Email { get; set; }
 
+        [Display(AutoGenerateField = false)]
+        public string MaskedMobileText { get; set; }
     }
 }

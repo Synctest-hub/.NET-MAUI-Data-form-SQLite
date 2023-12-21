@@ -44,7 +44,7 @@ namespace DataFormMAUI
         /// <param name="e">The event arguments.</param>
         private void OnDataFormValidateProperty(object? sender, DataFormValidatePropertyEventArgs e)
         {
-            if (e.PropertyName == nameof(ContactFormModel.Mobile) && !e.IsValid) 
+            if (e.PropertyName == nameof(ContactFormModel.Mobile) && !e.IsValid)
             {
                 e.ErrorMessage = e.NewValue == null || string.IsNullOrEmpty(e.NewValue.ToString()) ? "Please enter the mobile number" : "Invalid mobile number";
             }
@@ -79,6 +79,9 @@ namespace DataFormMAUI
                 }
                 else
                 {
+                    App.Database.UpdateContactAsync((this.dataForm.BindingContext as ContactsViewModel).SelectedItem);
+
+                    await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.DisplayAlert("", "Contact saved", "OK");
                 }
             }

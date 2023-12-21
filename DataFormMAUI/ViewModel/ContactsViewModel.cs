@@ -2,7 +2,7 @@
 
 namespace DataFormMAUI
 {
-    public class ContactsViewModel 
+    public class ContactsViewModel
     {
         public ContactFormModel SelectedItem { get; set; }
         public ObservableCollection<ContactFormModel> ContactsInfo { get; set; }
@@ -30,14 +30,15 @@ namespace DataFormMAUI
             PopulateDB();
         }
 
-        private async void PopulateDB()
+        private void PopulateDB()
         {
             foreach (ContactFormModel contact in ContactsInfo)
             {
-                var item = await App.Database.GetContactAsync(contact);
-                if(item == null)
-                   await App.Database.AddContactAsync(contact);
+                var item = App.Database.GetContactAsync(contact);
+                if (item == null)
+                    App.Database.AddContactAsync(contact);
             }
+
         }
         private async void OnCancelEdit()
         {
@@ -46,37 +47,33 @@ namespace DataFormMAUI
 
         private async void OnAddNewItem()
         {
-            await App.Database.AddContactAsync(SelectedItem);
+            App.Database.AddContactAsync(SelectedItem);
             ContactsInfo.Add(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void OnDeleteItem()
         {
-            await App.Database.DeleteContactAsync(SelectedItem);
+            App.Database.DeleteContactAsync(SelectedItem);
             ContactsInfo.Remove(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void OnSaveItem()
         {
-            await App.Database.UpdateContactAsync(SelectedItem);
-            await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private void OnEditContacts(object obj)
         {
             SelectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as ContactFormModel;
-            var editPage = new EditPage();
-            editPage.BindingContext = this;
+            var editPage = new EditPage() { BindingContext = this};
             App.Current.MainPage.Navigation.PushAsync(editPage);
         }
 
         private void OnCreateContacts()
         {
             SelectedItem = new ContactFormModel() { Name = "", Mobile = "", ProfileImage = "new.png" };
-            var editPage = new EditPage();
-            editPage.BindingContext = this;
+            var editPage = new EditPage() { BindingContext = this };
             App.Current.MainPage.Navigation.PushAsync(editPage);
         }
     }

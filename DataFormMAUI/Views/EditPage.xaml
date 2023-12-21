@@ -44,7 +44,7 @@
                         </dataForm:DataFormGroupItem.Items>
                     </dataForm:DataFormGroupItem>
 
-                    <dataForm:DataFormGroupItem Name="Mobile" IsExpanded="True">
+                    <dataForm:DataFormGroupItem Name="Mobile">
                         <dataForm:DataFormGroupItem.Items>
                             <dataForm:DataFormMaskedTextItem FieldName="Mobile" Mask="(###) ###-####" Keyboard="Numeric">
                                 <dataForm:DataFormMaskedTextItem.LeadingView>
