@@ -20,7 +20,7 @@
                 <dataForm:DataFormCustomItem FieldName="ProfileImage" LayoutType="Default">
                     <dataForm:DataFormCustomItem.EditorView>
                         <Image Source="{Binding SelectedItem.ProfileImage}"
-                                 HeightRequest="80"/>
+                                 HeightRequest="100"/>
                     </dataForm:DataFormCustomItem.EditorView>
                 </dataForm:DataFormCustomItem>
 

@@ -55,8 +55,7 @@
 
 	<ItemGroup>
 		<None Remove="Resources\Images\add.png" />
-		<!--<None Remove="Resources\Images\new.png" />-->
-		<None Remove="Resources\Images\peoplecircle0.png" />
+		<None Remove="Resources\Images\newcontact.png" />
 		<None Remove="Resources\Images\people_circle0.png" />
 		<None Remove="Resources\Images\people_circle1.png" />
 		<None Remove="Resources\Images\people_circle10.png" />
@@ -97,7 +96,7 @@
 
 	<ItemGroup>
 		<MauiImage Include="Resources\Images\add.png" />
-		<!--<MauiImage Include="Resources\Images\new.png" />-->
+		<MauiImage Include="Resources\Images\newcontact.png" />
 		<MauiImage Include="Resources\Images\people_circle0.png" />
 		<MauiImage Include="Resources\Images\people_circle1.png" />
 		<MauiImage Include="Resources\Images\people_circle10.png" />

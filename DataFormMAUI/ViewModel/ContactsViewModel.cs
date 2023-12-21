@@ -72,7 +72,7 @@ namespace DataFormMAUI
 
         private void OnCreateContacts()
         {
-            SelectedItem = new ContactFormModel() { Name = "", Mobile = "", ProfileImage = "new.png" };
+            SelectedItem = new ContactFormModel() { Name = "", Mobile = "", ProfileImage = "newcontact.png" };
             var editPage = new EditPage() { BindingContext = this };
             App.Current.MainPage.Navigation.PushAsync(editPage);
         }
