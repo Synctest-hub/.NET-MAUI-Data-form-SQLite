@@ -6,108 +6,102 @@
             xmlns:thickness ="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
             xmlns:local="clr-namespace:DataFormMAUI">
 
-    <Frame BorderColor="{OnIdiom Default=Transparent, Desktop=#C2C2C2}" MaximumHeightRequest="{OnPlatform MacCatalyst=800}"
-              VerticalOptions="{OnPlatform MacCatalyst=Center}"
-              HasShadow="False" Grid.ColumnSpan="{OnIdiom Default=2, Desktop=1}"
-              CornerRadius="10" Grid.Column="0" WidthRequest="{OnPlatform WinUI=400, MacCatalyst=600, Default=-1}"
-              HorizontalOptions="{OnIdiom Desktop=Center, Default=Fill}" Padding="0">
-        <Grid RowDefinitions="0.9*, 1, 0.1*">
-            <dataForm:SfDataForm x:Name="contactForm"
+    <Grid RowDefinitions="0.9*, 1, 0.1*">
+        <dataForm:SfDataForm x:Name="contactForm" 
                                 DataObject="{Binding SelectedItem}"
                                 LayoutType="TextInputLayout"
                                 AutoGenerateItems="False" 
                                ValidationMode="PropertyChanged">
-                <dataForm:SfDataForm.TextInputLayoutSettings>
-                    <dataForm:TextInputLayoutSettings ShowHelperText="True"
+            <dataForm:SfDataForm.TextInputLayoutSettings>
+                <dataForm:TextInputLayoutSettings ShowHelperText="True"
                                           FocusedStroke="{StaticResource Primary}"/>
-                </dataForm:SfDataForm.TextInputLayoutSettings>
-                <dataForm:SfDataForm.Items>
-                    <dataForm:DataFormCustomItem FieldName="ProfileImage" LayoutType="Default">
-                        <dataForm:DataFormCustomItem.EditorView>
-                            <Image Source="{Binding SelectedItem.ProfileImage}"
+            </dataForm:SfDataForm.TextInputLayoutSettings>
+            <dataForm:SfDataForm.Items>
+                <dataForm:DataFormCustomItem FieldName="ProfileImage" LayoutType="Default">
+                    <dataForm:DataFormCustomItem.EditorView>
+                        <Image Source="{Binding SelectedItem.ProfileImage}"
                                  HeightRequest="80"/>
-                        </dataForm:DataFormCustomItem.EditorView>
-                    </dataForm:DataFormCustomItem>
+                    </dataForm:DataFormCustomItem.EditorView>
+                </dataForm:DataFormCustomItem>
 
-                    <dataForm:DataFormGroupItem Name="Name">
-                        <dataForm:DataFormGroupItem.Items>
-                            <dataForm:DataFormTextItem FieldName="Name" ShowLeadingView="True" >
-                                <dataForm:DataFormTextItem.LeadingView>
-                                    <Label Text="F" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
-                                </dataForm:DataFormTextItem.LeadingView>
-                            </dataForm:DataFormTextItem>
-                            <dataForm:DataFormTextItem FieldName="LastName" ShowLeadingView="True">
-                                <dataForm:DataFormTextItem.LeadingView>
-                                    <Label/>
-                                </dataForm:DataFormTextItem.LeadingView>
-                            </dataForm:DataFormTextItem>
-                        </dataForm:DataFormGroupItem.Items>
-                    </dataForm:DataFormGroupItem>
+                <dataForm:DataFormGroupItem Name="Name">
+                    <dataForm:DataFormGroupItem.Items>
+                        <dataForm:DataFormTextItem FieldName="Name" ShowLeadingView="True" >
+                            <dataForm:DataFormTextItem.LeadingView>
+                                <Label Text="F" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                            </dataForm:DataFormTextItem.LeadingView>
+                        </dataForm:DataFormTextItem>
+                        <dataForm:DataFormTextItem FieldName="LastName" ShowLeadingView="True">
+                            <dataForm:DataFormTextItem.LeadingView>
+                                <Label/>
+                            </dataForm:DataFormTextItem.LeadingView>
+                        </dataForm:DataFormTextItem>
+                    </dataForm:DataFormGroupItem.Items>
+                </dataForm:DataFormGroupItem>
 
-                    <dataForm:DataFormGroupItem Name="Mobile">
-                        <dataForm:DataFormGroupItem.Items>
-                            <dataForm:DataFormMaskedTextItem FieldName="Mobile" Mask="(###) ###-####" Keyboard="Numeric">
-                                <dataForm:DataFormMaskedTextItem.LeadingView>
-                                    <Label Text="E" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
-                                </dataForm:DataFormMaskedTextItem.LeadingView>
-                            </dataForm:DataFormMaskedTextItem>
-                            <dataForm:DataFormMaskedTextItem FieldName="Landline" Mask="+1 ### ###-####" Keyboard="Numeric">
-                                <dataForm:DataFormMaskedTextItem.LeadingView>
-                                    <Label/>
-                                </dataForm:DataFormMaskedTextItem.LeadingView>
-                            </dataForm:DataFormMaskedTextItem>
-                        </dataForm:DataFormGroupItem.Items>
-                    </dataForm:DataFormGroupItem>
+                <dataForm:DataFormGroupItem Name="Mobile">
+                    <dataForm:DataFormGroupItem.Items>
+                        <dataForm:DataFormMaskedTextItem FieldName="Mobile" Mask="(###) ###-####" Keyboard="Numeric">
+                            <dataForm:DataFormMaskedTextItem.LeadingView>
+                                <Label Text="E" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                            </dataForm:DataFormMaskedTextItem.LeadingView>
+                        </dataForm:DataFormMaskedTextItem>
+                        <dataForm:DataFormMaskedTextItem FieldName="Landline" Mask="+1 ### ###-####" Keyboard="Numeric">
+                            <dataForm:DataFormMaskedTextItem.LeadingView>
+                                <Label/>
+                            </dataForm:DataFormMaskedTextItem.LeadingView>
+                        </dataForm:DataFormMaskedTextItem>
+                    </dataForm:DataFormGroupItem.Items>
+                </dataForm:DataFormGroupItem>
 
-                    <dataForm:DataFormGroupItem Name="Address" ColumnCount="2" IsExpanded="False">
-                        <dataForm:DataFormGroupItem.Items>
-                            <dataForm:DataFormMultilineItem FieldName="Address" RowSpan="2">
-                                <dataForm:DataFormMultilineItem.LeadingView>
-                                    <Label Text="C" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
-                                </dataForm:DataFormMultilineItem.LeadingView>
-                            </dataForm:DataFormMultilineItem>
-                            <dataForm:DataFormTextItem FieldName="City" >
-                                <dataForm:DataFormTextItem.LeadingView>
-                                    <Label/>
-                                </dataForm:DataFormTextItem.LeadingView>
-                            </dataForm:DataFormTextItem>
-                            <dataForm:DataFormTextItem FieldName="State">
-                                <dataForm:DataFormTextItem.LeadingView>
-                                    <Label/>
-                                </dataForm:DataFormTextItem.LeadingView>
-                            </dataForm:DataFormTextItem>
-                            <dataForm:DataFormMaskedTextItem FieldName="ZipCode" Mask="#####-####" Keyboard="Numeric"/>
-                        </dataForm:DataFormGroupItem.Items>
-                    </dataForm:DataFormGroupItem>
+                <dataForm:DataFormGroupItem Name="Address" ColumnCount="2" IsExpanded="False">
+                    <dataForm:DataFormGroupItem.Items>
+                        <dataForm:DataFormMultilineItem FieldName="Address" RowSpan="2">
+                            <dataForm:DataFormMultilineItem.LeadingView>
+                                <Label Text="C" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                            </dataForm:DataFormMultilineItem.LeadingView>
+                        </dataForm:DataFormMultilineItem>
+                        <dataForm:DataFormTextItem FieldName="City" >
+                            <dataForm:DataFormTextItem.LeadingView>
+                                <Label/>
+                            </dataForm:DataFormTextItem.LeadingView>
+                        </dataForm:DataFormTextItem>
+                        <dataForm:DataFormTextItem FieldName="State">
+                            <dataForm:DataFormTextItem.LeadingView>
+                                <Label/>
+                            </dataForm:DataFormTextItem.LeadingView>
+                        </dataForm:DataFormTextItem>
+                        <dataForm:DataFormMaskedTextItem FieldName="ZipCode" Mask="#####-####" Keyboard="Numeric"/>
+                    </dataForm:DataFormGroupItem.Items>
+                </dataForm:DataFormGroupItem>
 
-                    <dataForm:DataFormTextItem FieldName="Email" Keyboard="Email">
-                        <dataForm:DataFormTextItem.LeadingView>
-                            <Label Text="G" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
-                        </dataForm:DataFormTextItem.LeadingView>
-                    </dataForm:DataFormTextItem>
-                </dataForm:SfDataForm.Items>
-            </dataForm:SfDataForm>
-            <Border Grid.Row="1" Background="#F5F5F5"/>
+                <dataForm:DataFormTextItem FieldName="Email" Keyboard="Email">
+                    <dataForm:DataFormTextItem.LeadingView>
+                        <Label Text="G" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                    </dataForm:DataFormTextItem.LeadingView>
+                </dataForm:DataFormTextItem>
+            </dataForm:SfDataForm.Items>
+        </dataForm:SfDataForm>
+        <Border Grid.Row="1" Background="#F5F5F5"/>
 
-            <Grid HeightRequest="35" Grid.Row="2" ColumnDefinitions="*,auto">
-                <Button  x:Name="DeleteButton" Command="{Binding DeleteItemCommand}" Margin="0,0,5,0" BorderColor="Transparent"
+        <Grid HeightRequest="40" Grid.Row="2" ColumnDefinitions="*,auto">
+            <Button  x:Name="DeleteButton" Command="{Binding DeleteItemCommand}" Margin="15,0,5,0" BorderColor="Transparent"
                  Text="Delete" CornerRadius="10"  
                          HorizontalOptions="Start" />
 
-                <HorizontalStackLayout HorizontalOptions="End" Grid.Column="1" Margin="0,0,5,0">
-                    <Button CornerRadius="10" Margin="0,0,5,0" HorizontalOptions="Center" BorderColor="Transparent"   x:Name="cancelButton" 
+            <HorizontalStackLayout HorizontalOptions="End" Grid.Column="1" Margin="0,0,15,0">
+                <Button CornerRadius="10" Margin="0,0,10,0" HorizontalOptions="Center" BorderColor="Transparent"   x:Name="cancelButton" 
        Text="Cancel" Command="{Binding CancelEditCommand}"/>
 
-                    <Button Text="Save" CornerRadius="10"   Grid.Row="2" x:Name="saveButton" BorderColor="Transparent" Background="{StaticResource PrimaryBrush}" TextColor="White"
+                <Button Text="Save" CornerRadius="10"   Grid.Row="2" x:Name="saveButton" BorderColor="Transparent" Background="{StaticResource PrimaryBrush}" TextColor="White"
             VerticalOptions="Center"
             Command="{Binding SaveItemCommand}"
             HorizontalOptions="Center" />
-                    
-                </HorizontalStackLayout>
-            </Grid>
 
+            </HorizontalStackLayout>
         </Grid>
-    </Frame>
+
+    </Grid>
     <ContentPage.Behaviors>
         <local:ContactFormBehavior/>
     </ContentPage.Behaviors>
