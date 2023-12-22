@@ -8,7 +8,6 @@ namespace DataFormMAUI
         public ObservableCollection<ContactFormModel> ContactsInfo { get; set; }
         public Command CreateContactsCommand { get; set; }
         public Command<object> EditContactsCommand { get; set; }
-        public Command SaveItemCommand { get; set; }
         public Command DeleteItemCommand { get; set; }
         public Command AddItemCommand { get; set; }
         public Command CancelEditCommand { get; set; }
@@ -18,7 +17,6 @@ namespace DataFormMAUI
             GenerateContacts();
             CreateContactsCommand = new Command(OnCreateContacts);
             EditContactsCommand = new Command<object>(OnEditContacts);
-            SaveItemCommand = new Command(OnSaveItem);
             DeleteItemCommand = new Command(OnDeleteItem);
             AddItemCommand = new Command(OnAddNewItem);
             CancelEditCommand = new Command(OnCancelEdit);
@@ -38,8 +36,8 @@ namespace DataFormMAUI
                 if (item == null)
                     App.Database.AddContactAsync(contact);
             }
-
         }
+
         private async void OnCancelEdit()
         {
             await App.Current.MainPage.Navigation.PopAsync();
@@ -58,11 +56,6 @@ namespace DataFormMAUI
             ContactsInfo.Remove(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }
-
-        private async void OnSaveItem()
-        {
-        }
-
         private void OnEditContacts(object obj)
         {
             SelectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as ContactFormModel;

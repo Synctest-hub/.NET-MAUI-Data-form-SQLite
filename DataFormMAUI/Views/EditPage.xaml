@@ -95,7 +95,6 @@
 
                 <Button Text="Save" CornerRadius="10"   Grid.Row="2" x:Name="saveButton" BorderColor="Transparent" Background="{StaticResource PrimaryBrush}" TextColor="White"
             VerticalOptions="Center"
-            Command="{Binding SaveItemCommand}"
             HorizontalOptions="Center" />
 
             </HorizontalStackLayout>
