@@ -1,10 +1,11 @@
 ﻿using SQLite;
 using Syncfusion.Maui.DataForm;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataFormMAUI
 {
-    public class ContactFormModel
+    public class ContactFormModel : INotifyPropertyChanged
     {
         [PrimaryKey, AutoIncrement]
         [Display(AutoGenerateField = false)]
@@ -38,6 +39,7 @@ namespace DataFormMAUI
                     {
                         mobile = new string(value.Where(c => Char.IsLetterOrDigit(c)).ToArray());
                     }
+                    RaisePropertyChanged(nameof(Mobile));
                     if (mobile.Length == 10)
                         this.MaskedMobileText = string.Format("({0}) {1}-{2}", mobile.Substring(0, 3), mobile.Substring(3, 3), mobile.Substring(6));
                 }
@@ -60,7 +62,25 @@ namespace DataFormMAUI
 
         public string Email { get; set; }
 
+        private string maskedMobileText;
+
         [Display(AutoGenerateField = false)]
-        public string MaskedMobileText { get; set; }
+        public string MaskedMobileText
+        {
+            get { return maskedMobileText; }
+            set
+            {
+                this.maskedMobileText = value;
+                RaisePropertyChanged(nameof(MaskedMobileText));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
     }
 }
