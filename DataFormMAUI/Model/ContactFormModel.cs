@@ -39,9 +39,9 @@ namespace DataFormMAUI
                     {
                         mobile = new string(value.Where(c => Char.IsLetterOrDigit(c)).ToArray());
                     }
-                    RaisePropertyChanged(nameof(Mobile));
                     if (mobile.Length == 10)
                         this.MaskedMobileText = string.Format("({0}) {1}-{2}", mobile.Substring(0, 3), mobile.Substring(3, 3), mobile.Substring(6));
+                    RaisePropertyChanged(nameof(Mobile));
                 }
             }
         }
@@ -71,7 +71,6 @@ namespace DataFormMAUI
             set
             {
                 this.maskedMobileText = value;
-                RaisePropertyChanged(nameof(MaskedMobileText));
             }
         }
 

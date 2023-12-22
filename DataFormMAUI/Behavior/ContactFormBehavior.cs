@@ -13,6 +13,8 @@ namespace DataFormMAUI
         /// </summary>
         private SfDataForm? dataForm;
 
+        private bool isValid;
+
         /// <summary>
         /// Holds the save button instance.
         /// </summary>
@@ -36,7 +38,7 @@ namespace DataFormMAUI
                 this.saveButton.Clicked += OnSaveButtonClicked;
             }
         }
-
+     
         /// <summary>
         /// Invokes on data form item validation.
         /// </summary>
@@ -76,13 +78,13 @@ namespace DataFormMAUI
                             await App.Current.MainPage.DisplayAlert("", "Please enter the mobile number", "OK");
                         }
                     }
+                    isValid = false;
+
                 }
                 else
                 {
-                    App.Database.UpdateContactAsync((this.dataForm.BindingContext as ContactsViewModel).SelectedItem);
-
-                    await App.Current.MainPage.Navigation.PopAsync();
-                    await App.Current.MainPage.DisplayAlert("", "Contact saved", "OK");
+                    isValid = true;
+               
                 }
             }
         }
@@ -92,9 +94,15 @@ namespace DataFormMAUI
         /// </summary>
         /// <param name="sender">The button.</param>
         /// <param name="e">The event arguments.</param>
-        private void OnSaveButtonClicked(object? sender, EventArgs e)
+        private async void OnSaveButtonClicked(object? sender, EventArgs e)
         {
             this.dataForm?.Validate();
+
+            if(isValid)
+            {
+                await App.Current.MainPage.DisplayAlert("", "Contact saved", "OK");
+                await App.Current.MainPage.Navigation.PopAsync();
+            }
         }
 
         /// <inheritdoc/>
