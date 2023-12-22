@@ -100,8 +100,10 @@ namespace DataFormMAUI
 
             if(isValid)
             {
-                await App.Current.MainPage.DisplayAlert("", "Contact saved", "OK");
+                await Task.Delay(500);
                 await App.Current.MainPage.Navigation.PopAsync();
+                await App.Current.MainPage.DisplayAlert("", "Contact saved", "OK");
+
             }
         }
 
