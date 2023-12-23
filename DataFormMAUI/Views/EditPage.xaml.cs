@@ -15,7 +15,7 @@
 
         private void ContactFormBehavior_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            App.Database.UpdateContactAsync(this.contactForm.DataObject as ContactFormModel);
+            App.Database.UpdateContact(this.contactForm.DataObject as ContactFormModel);
         }
     }
 }

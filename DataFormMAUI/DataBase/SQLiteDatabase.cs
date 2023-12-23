@@ -12,28 +12,28 @@ namespace DataFormMAUI
             _database.CreateTable<ContactFormModel>();
         }
 
-        public List<ContactFormModel> GetContactsAsync()
+        public List<ContactFormModel> GetContacts()
         {
             List<ContactFormModel> contacts = _database.Table<ContactFormModel>().ToList();
             return contacts.OrderBy(x => x.Name[0]).ToList();
         }
 
-        public ContactFormModel GetContactAsync(ContactFormModel item)
+        public ContactFormModel GetContact(ContactFormModel item)
         {
             return _database.Table<ContactFormModel>().Where(i => i.ID == item.ID).FirstOrDefault();
         }
 
-        public int AddContactAsync(ContactFormModel item)
+        public int AddContact(ContactFormModel item)
         {
             return _database.Insert(item);
         }
 
-        public int DeleteContactAsync(ContactFormModel item)
+        public int DeleteContact(ContactFormModel item)
         {
             return _database.Delete(item);
         }
 
-        public int UpdateContactAsync(ContactFormModel item)
+        public int UpdateContact(ContactFormModel item)
         {
             if (item.ID != 0)
                 return _database.Update(item);

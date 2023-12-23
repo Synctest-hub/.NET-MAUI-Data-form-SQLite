@@ -32,9 +32,9 @@ namespace DataFormMAUI
         {
             foreach (ContactFormModel contact in ContactsInfo)
             {
-                var item = App.Database.GetContactAsync(contact);
+                var item = App.Database.GetContact(contact);
                 if (item == null)
-                    App.Database.AddContactAsync(contact);
+                    App.Database.AddContact(contact);
             }
         }
 
@@ -45,14 +45,14 @@ namespace DataFormMAUI
 
         private async void OnAddNewItem()
         {
-            App.Database.AddContactAsync(SelectedItem);
+            App.Database.AddContact(SelectedItem);
             ContactsInfo.Add(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void OnDeleteItem()
         {
-            App.Database.DeleteContactAsync(SelectedItem);
+            App.Database.DeleteContact(SelectedItem);
             ContactsInfo.Remove(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }

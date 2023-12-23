@@ -10,7 +10,7 @@ public partial class MainPage : ContentPage
 
     private void MainPage_Loaded(object sender, EventArgs e)
     {
-       listView.ItemsSource =  App.Database.GetContactsAsync();
+       listView.ItemsSource =  App.Database.GetContacts();
     }
 }
 
