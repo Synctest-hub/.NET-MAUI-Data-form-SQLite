@@ -41,7 +41,7 @@ namespace DataFormMAUI
 
         string[] CustomerNames_Girls =
         [
-            "Kyle",
+            "Kylie",
             "Gina",
             "Brenda",
             "Danielle",
@@ -55,7 +55,7 @@ namespace DataFormMAUI
             "Fiona",
             "Liam   ",
             "Georgia",
-            "Elijah ",
+            "Eliana",
             "Alivia",
             "Evan   ",
             "Ariel",
@@ -138,7 +138,7 @@ namespace DataFormMAUI
 
         string[] CustomerNames_Boys = new string[]
         {
-            "Irene",
+            "Ivan",
             "Watson",
             "Ralph",
             "Torrey",
